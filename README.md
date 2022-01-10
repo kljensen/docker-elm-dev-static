@@ -18,7 +18,7 @@ and are in `/usr/local/bin`. They're about 10MB in size total. You
 can see the versions of everything in the Dockerfile.
 
 My inspiration (and some of the code 🤣) for this came from
-[@maggisk/elm-without-npm)](https://github.com/maggisk/elm-without-npm).
+[@maggisk/elm-without-npm](https://github.com/maggisk/elm-without-npm).
 
 ## License
 
