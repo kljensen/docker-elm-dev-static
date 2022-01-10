@@ -7,8 +7,7 @@ WORKDIR "/app"
 
 ENV ELM_VERSION=0.19.1 \
     ELM_FORMAT_VERSION=0.8.5 \
-    ESBUILD_VERSION=0.14.11 \
-    SASS_VERSION=1.47.0
+    ESBUILD_VERSION=0.14.11 
 
 RUN apk add --no-cache curl libc6-compat upx binutils
 
