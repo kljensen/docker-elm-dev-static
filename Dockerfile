@@ -1,3 +1,4 @@
+FROM ghcr.io/kljensen/docker-elm-static@sha256:a7a172c3641cd6df8aa268b9379d1c18bb5b5d17f433132b04b20469cd351478 as elm
 FROM ghcr.io/kljensen/docker-grass-sass@sha256:0d83e2f61cd79c38de12a342ff3dbc36433a260e8a90c2500b17ee19ec6d289e as grass
 FROM alpine:3.15.0 as builder
 
@@ -10,14 +11,6 @@ ENV ELM_VERSION=0.19.1 \
     ESBUILD_VERSION=0.14.11 
 
 RUN apk add --no-cache curl libc6-compat upx binutils
-
-# Elm: https://elm-lang.org
-RUN curl -L "https://github.com/elm/compiler/releases/download/$ELM_VERSION/binary-for-linux-64-bit.gz" \
-    | gunzip > /usr/local/bin/elm \
-    && chmod +x /usr/local/bin/elm \
-    && strip /usr/local/bin/elm \
-    && upx --best --lzma /usr/local/bin/elm
-
 
 # elm-format: https://github.com/avh4/elm-format
 RUN curl -L "https://github.com/avh4/elm-format/releases/download/$ELM_FORMAT_VERSION/elm-format-$ELM_FORMAT_VERSION-linux-x64.tgz" \
@@ -34,7 +27,7 @@ RUN curl -L "https://registry.npmjs.org/esbuild-linux-64/-/esbuild-linux-64-$ESB
     && upx --best --lzma /usr/local/bin/esbuild
 
 FROM scratch
+COPY --from=elm /usr/local/bin/elm /usr/local/bin/elm
 COPY --from=grass /usr/local/bin/grass /usr/local/bin/grass
-COPY --from=builder /usr/local/bin/elm /usr/local/bin/elm
 COPY --from=builder /usr/local/bin/elm-format /usr/local/bin/elm-format
 COPY --from=builder /usr/local/bin/esbuild /usr/local/bin/esbuild
