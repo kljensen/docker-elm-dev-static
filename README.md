@@ -10,7 +10,7 @@ These are statically-linked binaries for
 I use this for a minimal web development image.  Want to use it?
 
 ```
-docker pull ghcr.io/kljensen/docker-elm-static:latest
+docker pull ghcr.io/kljensen/docker-elm-dev-static:latest
 ```
 
 All the binaries are linked against [musl](https://www.musl-libc.org/)
