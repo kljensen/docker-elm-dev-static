@@ -13,6 +13,9 @@ ENV ELM_VERSION=0.19.1 \
 RUN apk add --no-cache curl libc6-compat upx binutils
 
 # elm-format: https://github.com/avh4/elm-format
+# Notice that elm-format is build for linux as a
+# static binary https://github.com/avh4/elm-format/blob/main/Dockerfile
+# I think elm might be too?? https://github.com/elm/compiler/blob/770071accf791e8171440709effe71e78a9ab37c/installers/linux/Dockerfile
 RUN curl -L "https://github.com/avh4/elm-format/releases/download/$ELM_FORMAT_VERSION/elm-format-$ELM_FORMAT_VERSION-linux-x64.tgz" \
     | tar xzO > /usr/local/bin/elm-format \
     && chmod +x /usr/local/bin/elm-format \
