@@ -23,7 +23,7 @@ My inspiration (and some of the code 🤣) for this came from
 ## License
 
 Anything I wrote is covered by the license below (the "unlicense"). Stuff
-written by other people? ¯\\_(ツ)_/¯
+written by other people? ¯\\_(ツ)\_/¯
 
 This is free and unencumbered software released into the public domain.
 
